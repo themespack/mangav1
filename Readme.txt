@@ -6,6 +6,7 @@ mangastream/
 ├── footer.php
 ├── sidebar.php
 ├── single-manga.php
+├── single.php
 ├── archive.php
 ├── search.php
 ├── 404.php
@@ -40,9 +41,9 @@ mangastream/
 ├── template-parts/
 │ ├── manga-card.php
 │ ├── manga-reader.php
-│ ├── breadcrumb.php
-│ ├── manga-list.php
-│ └── pagination.php
+│ ├── manga-single.php
+│ ├── manga-info.php
+│ └── manga-list.php
 ├── images/
 │ ├── no-image.jpg
 │ └── logo.png
