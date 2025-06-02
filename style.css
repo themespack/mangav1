@@ -1,0 +1,1241 @@
+/*
+Theme Name: MangaStream Clone
+Description: Tema WordPress untuk membaca manga dengan fitur modern
+Version: 1.0
+Author: Your Name
+*/
+
+/* ===== CSS CUSTOM PROPERTIES ===== */
+:root {
+    --primary-color: #007cba;
+    --primary-dark: #005a87;
+    --secondary-color: #6c757d;
+    --success-color: #28a745;
+    --danger-color: #dc3545;
+    --warning-color: #ffc107;
+    --info-color: #17a2b8;
+    
+    --text-color: #333;
+    --text-muted: #666;
+    --text-light: #999;
+    
+    --bg-color: #f8f9fa;
+    --white: #fff;
+    --border-color: #ddd;
+    --border-light: #eee;
+    
+    --header-height: 60px;
+    --sidebar-width: 300px;
+    --border-radius: 8px;
+    --box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    
+    --font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    
+    /* Dark mode colors */
+    --dark-bg: #1a1a1a;
+    --dark-surface: #2d2d2d;
+    --dark-border: #404040;
+    --dark-text: #e0e0e0;
+    --dark-text-muted: #b0b0b0;
+    --dark-primary: #4fc3f7;
+}
+
+/* ===== RESET CSS ===== */
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-family);
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--bg-color);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+a {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+a:hover {
+    color: var(--primary-dark);
+}
+
+/* ===== TYPOGRAPHY ===== */
+h1, .h1 {
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    line-height: 1.2;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+h2, .h2 {
+    font-size: clamp(1.5rem, 3.5vw, 2rem);
+    line-height: 1.3;
+    font-weight: 600;
+    margin-bottom: 0.875rem;
+}
+
+h3, .h3 {
+    font-size: clamp(1.25rem, 3vw, 1.75rem);
+    line-height: 1.4;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+}
+
+h4, .h4 {
+    font-size: clamp(1.125rem, 2.5vw, 1.5rem);
+    line-height: 1.4;
+    font-weight: 500;
+    margin-bottom: 0.625rem;
+}
+
+h5, .h5 {
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    line-height: 1.5;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+}
+
+h6, .h6 {
+    font-size: clamp(0.875rem, 1.5vw, 1.125rem);
+    line-height: 1.5;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+}
+
+p, .body-text {
+    font-size: clamp(0.875rem, 2vw, 1rem);
+    line-height: 1.7;
+    margin-bottom: 1rem;
+}
+
+small, .small-text {
+    font-size: clamp(0.75rem, 1.5vw, 0.875rem);
+    line-height: 1.5;
+}
+
+/* ===== HEADER ===== */
+.site-header {
+    background: var(--white);
+    box-shadow: var(--box-shadow);
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    height: var(--header-height);
+}
+
+.header-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 clamp(15px, 3vw, 20px);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: var(--header-height);
+    gap: clamp(15px, 3vw, 20px);
+}
+
+.site-logo {
+    font-size: clamp(1.25rem, 3vw, 1.5rem);
+    font-weight: 700;
+    color: var(--primary-color);
+    text-decoration: none;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.main-navigation {
+    flex: 1;
+    max-width: 300px;
+}
+
+.main-navigation ul {
+    display: flex;
+    list-style: none;
+    gap: clamp(12px, 2vw, 20px);
+    margin: 0;
+    padding: 0;
+}
+
+.main-navigation a {
+    color: var(--text-color);
+    font-weight: 500;
+    font-size: clamp(0.8rem, 2vw, 0.9rem);
+    padding: 8px 12px;
+    border-radius: 4px;
+    transition: all 0.3s;
+    white-space: nowrap;
+}
+
+.main-navigation a:hover {
+    color: var(--primary-color);
+    background: rgba(0, 124, 186, 0.1);
+}
+
+/* ===== SEARCH CONTAINER FIX ===== */
+.search-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    flex: 1;
+    max-width: clamp(250px, 40vw, 350px);
+    min-width: 200px;
+}
+
+.search-input {
+    height: 36px;
+    border-radius: 6px 0 0 6px;
+    padding: 0 12px;
+    font-size: 0.9rem;
+    border: 1px solid var(--border-color);
+    border-right: none;
+    outline: none;
+    flex: 1;
+    background: var(--white);
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+}
+
+.search-input:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px rgba(0, 124, 186, 0.1);
+}
+
+.search-btn {
+    padding: 0 12px;
+    height: 36px;
+    border-radius: 0 6px 6px 0;
+    background-color: var(--primary-color);
+    color: var(--white);
+    border: 1px solid var(--primary-color);
+    border-left: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    min-width: 40px;
+    flex-shrink: 0;
+    box-sizing: border-box;
+    font-size: 0.9rem;
+}
+
+.search-btn:hover {
+    background-color: var(--primary-dark);
+    border-color: var(--primary-dark);
+}
+
+.search-btn:focus {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+}
+
+.search-btn i {
+    font-size: 0.9rem;
+}
+
+/* ===== SEARCH RESULTS ===== */
+.search-results {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--white);
+    border: 1px solid var(--border-color);
+    border-top: none;
+    border-radius: 0 0 6px 6px;
+    box-shadow: var(--box-shadow);
+    max-height: 300px;
+    overflow-y: auto;
+    z-index: 1000;
+    display: none;
+}
+
+.search-result-item {
+    display: flex;
+    padding: 12px 15px;
+    border-bottom: 1px solid var(--border-light);
+    transition: background-color 0.2s;
+}
+
+.search-result-item:hover {
+    background-color: #f8f9fa;
+}
+
+.search-result-item:last-child {
+    border-bottom: none;
+}
+
+.search-result-thumb {
+    width: 40px;
+    height: 50px;
+    margin-right: 12px;
+    flex-shrink: 0;
+}
+
+.search-result-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+.search-result-info {
+    flex: 1;
+}
+
+.search-result-title {
+    font-weight: 600;
+    color: var(--text-color);
+    text-decoration: none;
+    display: block;
+    margin-bottom: 4px;
+}
+
+.search-result-title:hover {
+    color: var(--primary-color);
+}
+
+.search-result-meta {
+    font-size: 12px;
+    color: var(--text-muted);
+}
+
+.search-loading,
+.no-search-results,
+.search-error {
+    padding: 20px;
+    text-align: center;
+    color: var(--text-muted);
+}
+
+/* ===== DARK MODE TOGGLE ===== */
+.dark-mode-toggle {
+    background: none;
+    border: 1px solid var(--border-color);
+    color: var(--text-muted);
+    font-size: 1rem;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 6px;
+    transition: all 0.3s;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.dark-mode-toggle:hover {
+    background: #f0f0f0;
+    color: var(--text-color);
+    border-color: var(--primary-color);
+}
+
+/* ===== MOBILE MENU ===== */
+.mobile-menu-toggle {
+    display: none;
+    background: none;
+    border: 1px solid var(--border-color);
+    color: var(--text-color);
+    font-size: 1rem;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 6px;
+    width: 36px;
+    height: 36px;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+/* ===== MAIN CONTENT ===== */
+.main-content {
+    margin-top: var(--header-height);
+    min-height: calc(100vh - var(--header-height));
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 clamp(1rem, 3vw, 2rem);
+    display: grid;
+    grid-template-columns: 1fr var(--sidebar-width);
+    gap: clamp(1rem, 3vw, 2rem);
+}
+
+/* ===== MANGA GRID ===== */
+.manga-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(clamp(140px, 20vw, 200px), 1fr));
+    gap: clamp(1rem, 3vw, 1.25rem);
+    margin-bottom: 2rem;
+}
+
+.manga-card {
+    background: var(--white);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: var(--box-shadow);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.manga-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+
+.manga-thumbnail {
+    width: 100%;
+    height: clamp(200px, 35vw, 280px);
+    object-fit: cover;
+}
+
+.manga-info {
+    padding: clamp(0.75rem, 3vw, 1rem);
+}
+
+.manga-title {
+    font-size: clamp(0.875rem, 2.5vw, 1rem);
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    line-height: 1.4;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    color: var(--text-color);
+}
+
+.manga-title:hover {
+    color: var(--primary-color);
+}
+
+.manga-meta {
+    font-size: clamp(0.75rem, 2vw, 0.875rem);
+    color: var(--text-muted);
+    line-height: 1.4;
+    margin-bottom: 5px;
+}
+
+/* ===== MANGA STATUS ===== */
+.manga-status {
+    display: inline-block;
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: bold;
+    color: var(--white);
+}
+
+.manga-status.ongoing {
+    background: var(--success-color);
+}
+
+.manga-status.completed {
+    background: var(--danger-color);
+}
+
+.manga-status.hiatus {
+    background: var(--warning-color);
+    color: var(--text-color);
+}
+
+/* ===== BUTTONS ===== */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.3s;
+    text-align: center;
+    justify-content: center;
+}
+
+.btn-primary {
+    background: var(--primary-color);
+    color: var(--white);
+}
+
+.btn-primary:hover {
+    background: var(--primary-dark);
+    transform: translateY(-2px);
+}
+
+.btn-secondary {
+    background: var(--secondary-color);
+    color: var(--white);
+}
+
+.btn-secondary:hover {
+    background: #545b62;
+    transform: translateY(-2px);
+}
+
+/* ===== SIDEBAR ===== */
+.sidebar {
+    background: var(--white);
+    border-radius: var(--border-radius);
+    padding: clamp(1rem, 3vw, 1.5rem);
+    height: fit-content;
+    box-shadow: var(--box-shadow);
+}
+
+.widget {
+    margin-bottom: clamp(1.5rem, 4vw, 2rem);
+}
+
+.widget-title {
+    font-size: clamp(1rem, 3vw, 1.125rem);
+    font-weight: 600;
+    margin-bottom: clamp(0.75rem, 2vw, 1rem);
+    padding-bottom: clamp(0.5rem, 1vw, 0.75rem);
+    border-bottom: 2px solid var(--primary-color);
+}
+
+/* ===== PROGRESS BAR FIXES ===== */
+.progress-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    z-index: 999;
+    pointer-events: none;
+}
+
+.progress-bar {
+    height: 100%;
+    background: var(--primary-color);
+    transition: width 0.3s ease;
+    width: 0%;
+    max-width: 100vw;
+    max-height: 3px;
+    overflow: hidden;
+}
+
+/* Pastikan progress bar tidak menutupi admin bar */
+body.admin-bar .progress-container {
+    top: 32px;
+}
+
+/* ===== READER STYLES ===== */
+.manga-reader {
+    background: #000;
+    min-height: 100vh;
+    padding: 20px 0;
+    position: relative;
+    z-index: 1;
+}
+
+.reader-container {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.reader-navigation {
+    background: rgba(255,255,255,0.95);
+    padding: clamp(0.75rem, 3vw, 1rem);
+    margin-bottom: clamp(1rem, 3vw, 1.25rem);
+    border-radius: var(--border-radius);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: clamp(0.75rem, 2vw, 1rem);
+    position: relative;
+    z-index: 1000;
+    backdrop-filter: blur(10px);
+}
+
+.nav-btn {
+    padding: clamp(8px, 2vw, 12px) clamp(12px, 3vw, 20px);
+    font-size: clamp(0.75rem, 2vw, 0.875rem);
+    border-radius: 4px;
+    background: var(--primary-color);
+    color: var(--white);
+    border: none;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.nav-btn:hover:not(:disabled) {
+    background: var(--primary-dark);
+    transform: translateY(-2px);
+}
+
+.nav-btn:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.chapter-selector {
+    padding: clamp(6px, 2vw, 10px) clamp(10px, 3vw, 15px);
+    font-size: clamp(0.75rem, 2vw, 0.875rem);
+    min-width: clamp(150px, 30vw, 200px);
+    max-width: 300px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    background: var(--white);
+}
+
+.page-info {
+    font-size: clamp(0.75rem, 2vw, 0.875rem);
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.manga-pages {
+    margin: 20px 0;
+    text-align: center;
+}
+
+.manga-page {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: clamp(0.5rem, 2vw, 1rem);
+    border-radius: 5px;
+    box-shadow: 0 4px 15px rgba(255,255,255,0.1);
+}
+
+/* Chapter Info */
+.chapter-info {
+    padding: clamp(1rem, 4vw, 2rem);
+    margin-bottom: clamp(1rem, 3vw, 1.5rem);
+    text-align: center;
+    background: var(--white);
+    border-radius: 10px;
+    box-shadow: var(--box-shadow);
+}
+
+.chapter-title {
+    font-size: clamp(1.25rem, 4vw, 1.75rem);
+    margin-bottom: clamp(0.5rem, 2vw, 1rem);
+    line-height: 1.3;
+}
+
+.chapter-subtitle {
+    font-size: clamp(1rem, 3vw, 1.25rem);
+    color: var(--text-muted);
+    margin-bottom: clamp(0.75rem, 2vw, 1rem);
+}
+
+.chapter-meta {
+    display: flex;
+    justify-content: center;
+    gap: clamp(1rem, 4vw, 2rem);
+    flex-wrap: wrap;
+    font-size: clamp(0.75rem, 2vw, 0.875rem);
+    color: var(--text-muted);
+}
+
+/* ===== ERROR HANDLING ===== */
+.error-message,
+.no-pages {
+    text-align: center;
+    padding: 60px 20px;
+    background: var(--white);
+    border-radius: 10px;
+    box-shadow: var(--box-shadow);
+    margin: 30px 0;
+}
+
+.no-pages-content i {
+    font-size: 48px;
+    color: var(--danger-color);
+    margin-bottom: 20px;
+}
+
+.no-pages h3 {
+    color: var(--text-color);
+    margin-bottom: 15px;
+}
+
+.no-pages p {
+    color: var(--text-muted);
+    margin-bottom: 30px;
+}
+
+.debug-info {
+    background: #f8f9fa;
+    border: 1px solid #dee2e6;
+    border-radius: 5px;
+    padding: 20px;
+    margin: 20px 0;
+    text-align: left;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.debug-info h4 {
+    color: #495057;
+    margin-bottom: 15px;
+}
+
+.debug-info ul {
+    list-style: none;
+    padding: 0;
+}
+
+.debug-info li {
+    margin-bottom: 10px;
+    padding: 5px 0;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.debug-info pre {
+    background: #f1f3f4;
+    padding: 10px;
+    border-radius: 3px;
+    overflow-x: auto;
+    font-size: 12px;
+}
+
+.no-pages-actions {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.image-error {
+    width: 100%;
+    min-height: 400px;
+    background: #f8f9fa;
+    border: 2px dashed #dee2e6;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+.error-content {
+    text-align: center;
+    padding: 20px;
+}
+
+.error-content i {
+    font-size: 48px;
+    color: var(--danger-color);
+    margin-bottom: 15px;
+}
+
+.error-content p {
+    margin-bottom: 10px;
+    color: var(--text-muted);
+}
+
+.error-content small {
+    display: block;
+    margin-bottom: 15px;
+    color: var(--text-light);
+}
+
+.retry-btn {
+    padding: 10px 20px;
+    background: var(--primary-color);
+    color: var(--white);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.retry-btn:hover {
+    background: var(--primary-dark);
+}
+
+.retry-btn i {
+    margin-right: 5px;
+}
+
+/* ===== DARK MODE ===== */
+.dark-mode {
+    background-color: var(--dark-bg);
+    color: var(--dark-text);
+}
+
+.dark-mode .site-header {
+    background: var(--dark-surface);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+}
+
+.dark-mode .site-logo {
+    color: var(--dark-primary);
+}
+
+.dark-mode .main-navigation a {
+    color: var(--dark-text);
+}
+
+.dark-mode .main-navigation a:hover {
+    color: var(--dark-primary);
+    background: rgba(79, 195, 247, 0.1);
+}
+
+.dark-mode .search-input {
+    background: var(--dark-surface);
+    border-color: var(--dark-border);
+    color: var(--dark-text);
+}
+
+.dark-mode .search-input:focus {
+    border-color: var(--dark-primary);
+    box-shadow: 0 0 0 2px rgba(79, 195, 247, 0.1);
+}
+
+.dark-mode .search-btn {
+    background: var(--dark-primary);
+    border-color: var(--dark-primary);
+    color: var(--dark-bg);
+}
+
+.dark-mode .search-btn:hover {
+    background: #29b6f6;
+    border-color: #29b6f6;
+}
+
+.dark-mode .search-results {
+    background: var(--dark-surface);
+    border-color: var(--dark-border);
+}
+
+.dark-mode .search-result-item:hover {
+    background-color: var(--dark-border);
+}
+
+.dark-mode .search-result-title {
+    color: var(--dark-text);
+}
+
+.dark-mode .search-result-title:hover {
+    color: var(--dark-primary);
+}
+
+.dark-mode .search-result-meta {
+    color: var(--dark-text-muted);
+}
+
+.dark-mode .dark-mode-toggle {
+    border-color: var(--dark-border);
+    color: var(--dark-text);
+}
+
+.dark-mode .dark-mode-toggle:hover {
+    background: var(--dark-border);
+    color: var(--dark-primary);
+    border-color: var(--dark-primary);
+}
+
+.dark-mode .mobile-menu-toggle {
+    border-color: var(--dark-border);
+    color: var(--dark-text);
+}
+
+.dark-mode .main-navigation {
+    background: var(--dark-surface);
+    border-top: 1px solid var(--dark-border);
+}
+
+.dark-mode .main-navigation a {
+    border-bottom-color: var(--dark-border);
+}
+
+.dark-mode .main-navigation a:hover {
+    background: var(--dark-border);
+}
+
+.dark-mode .manga-card,
+.dark-mode .sidebar,
+.dark-mode .widget,
+.dark-mode .chapter-info,
+.dark-mode .no-pages,
+.dark-mode .error-message {
+    background: var(--dark-surface);
+    color: var(--dark-text);
+}
+
+.dark-mode .manga-title {
+    color: var(--dark-text);
+}
+
+.dark-mode .manga-title:hover {
+    color: var(--dark-primary);
+}
+
+.dark-mode .manga-meta,
+.dark-mode .chapter-meta {
+    color: var(--dark-text-muted);
+}
+
+.dark-mode .chapter-subtitle {
+    color: var(--dark-text-muted);
+}
+
+.dark-mode .progress-bar {
+    background: var(--dark-primary);
+}
+
+.dark-mode .debug-info {
+    background: var(--dark-border);
+    border-color: #555;
+    color: var(--dark-text);
+}
+
+.dark-mode .debug-info li {
+    border-bottom-color: #555;
+}
+
+.dark-mode .debug-info pre {
+    background: #555;
+    color: var(--dark-text);
+}
+
+.dark-mode .image-error {
+    background: var(--dark-border);
+    border-color: #555;
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+@media (max-width: 768px) {
+    .container {
+        grid-template-columns: 1fr;
+        padding: 0 1rem;
+    }
+    
+    .main-navigation {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: var(--white);
+        box-shadow: var(--box-shadow);
+        max-width: none;
+        z-index: 999;
+    }
+    
+    .main-navigation.active {
+        display: block;
+    }
+    
+    .main-navigation ul {
+        flex-direction: column;
+        gap: 0;
+        padding: 10px;
+    }
+    
+    .main-navigation a {
+        display: block;
+        padding: 12px 15px;
+        border-bottom: 1px solid var(--border-light);
+        border-radius: 0;
+    }
+    
+    .main-navigation a:hover {
+        background: #f8f9fa;
+    }
+    
+    .mobile-menu-toggle {
+        display: flex;
+    }
+    
+    .search-container {
+        max-width: 220px;
+        min-width: 150px;
+    }
+    
+    .search-input,
+    .search-btn,
+    .dark-mode-toggle {
+        height: 32px;
+        font-size: 0.85rem;
+    }
+    
+    .search-input {
+        padding: 0 10px;
+    }
+    
+    .search-btn {
+        padding: 0 10px;
+        min-width: 36px;
+    }
+    
+    .dark-mode-toggle {
+        width: 32px;
+        height: 32px;
+        padding: 6px;
+    }
+    
+    .reader-navigation {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .nav-left,
+    .nav-center,
+    .nav-right {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+    
+    .chapter-selector {
+        width: 100%;
+        max-width: 300px;
+    }
+    
+    .chapter-meta {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+}
+
+@media (max-width: 640px) {
+    .site-header {
+        height: 50px;
+    }
+    
+    .header-container {
+        height: 50px;
+        padding: 0 10px;
+        gap: 8px;
+    }
+    
+    .site-logo {
+        font-size: 1.2rem;
+    }
+    
+    .main-content {
+        margin-top: 50px;
+    }
+    
+    .search-container {
+        max-width: 180px;
+        min-width: 120px;
+    }
+    
+    .dark-mode-toggle {
+        width: 28px;
+        height: 28px;
+        font-size: 0.8rem;
+    }
+    
+    .search-input,
+    .search-btn {
+        height: 28px;
+        font-size: 0.8rem;
+    }
+    
+    .search-input {
+        padding: 0 8px;
+    }
+    
+    .search-btn {
+        padding: 0 8px;
+        min-width: 32px;
+    }
+}
+
+@media (max-width: 480px) {
+    .manga-grid {
+        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+        gap: 0.75rem;
+    }
+    
+    .manga-thumbnail {
+        height: 170px;
+    }
+    
+    .search-container {
+        max-width: 140px;
+        min-width: 100px;
+    }
+    
+    .header-container {
+        gap: 6px;
+        padding: 0 8px;
+    }
+    
+    .site-logo {
+        font-size: 1.1rem;
+    }
+    
+    .search-input {
+        font-size: 0.75rem;
+    }
+    
+    .search-btn {
+        font-size: 0.75rem;
+    }
+}
+
+/* ===== ADMIN BAR ADJUSTMENTS ===== */
+body.admin-bar .site-header {
+    top: 32px;
+}
+
+body.admin-bar .main-content {
+    margin-top: calc(var(--header-height) + 32px);
+}
+
+body.admin-bar .progress-container {
+    top: 32px;
+}
+
+@media screen and (max-width: 782px) {
+    body.admin-bar .site-header {
+        top: 46px;
+    }
+    
+    body.admin-bar .main-content {
+        margin-top: calc(var(--header-height) + 46px);
+    }
+    
+    body.admin-bar .progress-container {
+        top: 46px;
+    }
+}
+
+@media screen and (max-width: 640px) {
+    body.admin-bar .main-content {
+        margin-top: 96px; /* 50px header + 46px admin bar */
+    }
+}
+
+@media screen and (max-width: 600px) {
+    body.admin-bar .site-header {
+        top: 0;
+    }
+    
+    body.admin-bar .main-content {
+        margin-top: 50px;
+    }
+    
+    body.admin-bar .progress-container {
+        top: 0;
+    }
+}
+
+/* ===== UTILITY CLASSES ===== */
+.text-center { text-align: center; }
+.text-left { text-align: left; }
+.text-right { text-align: right; }
+.hidden { display: none; }
+.visible { display: block; }
+.flex { display: flex; }
+.flex-center { display: flex; align-items: center; justify-content: center; }
+.flex-between { display: flex; align-items: center; justify-content: space-between; }
+
+/* ===== ACCESSIBILITY ===== */
+.nav-btn:focus,
+.btn:focus,
+.search-input:focus,
+.search-btn:focus,
+.dark-mode-toggle:focus,
+.mobile-menu-toggle:focus {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+}
+
+/* High Contrast Mode */
+@media (prefers-contrast: high) {
+    .manga-card {
+        border: 2px solid #000;
+    }
+    
+    .nav-btn,
+    .btn {
+        border: 2px solid currentColor;
+    }
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+    
+    .manga-card:hover {
+        transform: none;
+    }
+    
+    .nav-btn:hover,
+    .btn:hover {
+        transform: none;
+    }
+}
+
+/* ===== PRINT STYLES ===== */
+@media print {
+    .site-header,
+    .sidebar,
+    .reader-navigation,
+    .dark-mode-toggle,
+    .mobile-menu-toggle,
+    .progress-container {
+        display: none !important;
+    }
+    
+    .main-content {
+        margin-top: 0;
+    }
+    
+    .container {
+        grid-template-columns: 1fr;
+        max-width: none;
+        padding: 0;
+    }
+    
+    .manga-page {
+        page-break-inside: avoid;
+        margin-bottom: 1cm;
+    }
+    
+    body {
+        font-size: 12pt;
+        line-height: 1.5;
+        color: #000;
+        background: #fff;
+    }
+    
+    h1, h2, h3 {
+        page-break-after: avoid;
+    }
+}

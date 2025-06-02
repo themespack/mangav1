@@ -1,0 +1,234 @@
+/* Responsive Design */
+
+/* Tablet Styles */
+@media (max-width: 1024px) {
+    .container {
+        grid-template-columns: 1fr 250px;
+        gap: 20px;
+    }
+    
+    .manga-grid {
+        grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    }
+    
+    .header-container {
+        padding: 0 15px;
+    }
+    
+    .search-input {
+        width: 250px;
+    }
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+    .header-container {
+        flex-direction: column;
+        height: auto;
+        padding: 15px;
+    }
+    
+    .main-navigation {
+        order: 3;
+        width: 100%;
+    }
+    
+    .main-navigation ul {
+        flex-direction: column;
+        gap: 10px;
+        margin: 15px 0;
+        text-align: center;
+    }
+    
+    .search-container {
+        order: 2;
+        margin: 15px 0;
+    }
+    
+    .search-input {
+        width: 100%;
+        max-width: 300px;
+    }
+    
+    .main-content {
+        margin-top: 140px;
+    }
+    
+    .container {
+        grid-template-columns: 1fr;
+        padding: 15px;
+    }
+    
+    .manga-grid {
+        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+        gap: 15px;
+    }
+    
+    .manga-card {
+        font-size: 14px;
+    }
+    
+    .manga-thumbnail {
+        height: 200px;
+    }
+    
+    .manga-info {
+        padding: 10px;
+    }
+    
+    /* Single manga mobile */
+    .manga-header {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .manga-poster {
+        margin-bottom: 20px;
+    }
+    
+    .manga-cover {
+        max-width: 200px;
+        height: auto;
+    }
+    
+    /* Reader mobile */
+    .reader-navigation {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+    
+    .nav-left,
+    .nav-center,
+    .nav-right {
+        width: 100%;
+    }
+    
+    .chapter-selector {
+        width: 100%;
+        max-width: 300px;
+    }
+    
+    .manga-page {
+        width: 100%;
+        height: auto;
+    }
+    
+    /* Footer mobile */
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: 30px;
+        text-align: center;
+    }
+    
+    .footer-bottom-content {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+    }
+}
+
+/* Small Mobile */
+@media (max-width: 480px) {
+    .manga-grid {
+        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+        gap: 10px;
+    }
+    
+    .manga-thumbnail {
+        height: 170px;
+    }
+    
+    .container {
+        padding: 10px;
+    }
+    
+    .search-input {
+        font-size: 16px; /* Prevent zoom on iOS */
+    }
+    
+    .reader-container {
+        padding: 10px;
+    }
+    
+    .reader-navigation {
+        padding: 10px;
+        margin-bottom: 15px;
+    }
+    
+    .nav-btn {
+        padding: 8px 15px;
+        font-size: 14px;
+    }
+    
+    .chapter-selector {
+        font-size: 14px;
+        padding: 8px;
+    }
+}
+
+/* Landscape phone */
+@media (max-width: 768px) and (orientation: landscape) {
+    .main-content {
+        margin-top: 80px;
+    }
+    
+    .header-container {
+        flex-direction: row;
+        height: 60px;
+        padding: 10px 15px;
+    }
+    
+    .main-navigation ul {
+        flex-direction: row;
+        gap: 20px;
+        margin: 0;
+    }
+    
+    .search-container {
+        margin: 0;
+    }
+}
+
+/* Print styles */
+@media print {
+    .site-header,
+    .sidebar,
+    .site-footer,
+    .reader-navigation,
+    .back-to-top {
+        display: none !important;
+    }
+    
+    .main-content {
+        margin-top: 0;
+    }
+    
+    .container {
+        grid-template-columns: 1fr;
+        max-width: none;
+    }
+    
+    .manga-page {
+        page-break-inside: avoid;
+        margin-bottom: 20px;
+    }
+}
+
+/* High DPI displays */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .manga-thumbnail,
+    .manga-cover {
+        image-rendering: -webkit-optimize-contrast;
+        image-rendering: crisp-edges;
+    }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
